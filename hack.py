@@ -1,11 +1,16 @@
+import os
 import sys
 import StringIO
-from rdflib.plugins.parsers.pyRdfa import pyRdfa
 
-class MarkdownFile(pyRdfa):
-    def _get_input(self, filename):
-        text = open(filename).read()
-        text = ''.join([v for u, v in enumerate(text.split("`")) if (u & 1) == 0])
-        return StringIO.StringIO("<html>{0}</html>".format(text))
+from rdflib import Graph, Literal, BNode, RDF
+from rdflib.namespace import FOAF, DC
 
-print MarkdownFile().rdf_from_source(sys.argv[1])
+if __name__=='__main__':
+
+    store = Graph()
+    x = [part.split('-->')[0] for
+         part in open(sys.argv[1]).read().split('<!--')[1:]]
+    store.parse(StringIO.StringIO('\n'.join(x)), format="turtle")
+
+    print store.serialize(format="pretty-xml")
+    print store.serialize(format="turtle")

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -d venv ]
 then
@@ -7,9 +7,9 @@ fi
 
 source venv/bin/activate
 
-if [ ! -f venv/bin/rdf2dot ]
+if [ ! -f .reqs_done ]
 then
-    pip install rdflib
+    pip install -r requirements.txt && touch .reqs_done
 fi
 
 python hack.py README.md
