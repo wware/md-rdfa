@@ -9,10 +9,15 @@ class MarkdownGraph(Graph):
         if kwargs.get('format') == 'md':
             args = list(args)
             source = args.pop(0)
-            assert isinstance(source, basestring)
-            assert os.path.isfile(source)
+            if isinstance(source, StringIO.StringIO):
+                source = source.read()
+            elif isinstance(source, basestring):
+                if os.path.isfile(source):
+                    source = open(source).read()
+            else:
+                raise Exception('weird source? {0}'.format(source))
             pieces = [part.split('-->')[0] for
-                      part in open(source).read().split('<!--')[1:]]
+                      part in source.split('<!--')[1:]]
             source = StringIO.StringIO('\n'.join(pieces))
             args = tuple([source] + args)
             kwargs['format'] = 'n3'

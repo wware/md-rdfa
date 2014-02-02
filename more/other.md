@@ -8,5 +8,5 @@ comment. You won't see that on Github unless you look at the raw MD source.
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 <http://willware.willware.blogspot.com> a schema:WebPage ;
-  foaf:author       "http://willware.net/#self" ;
+  foaf:author       <http://willware.net/#self> .
 -->
