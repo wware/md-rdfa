@@ -3,10 +3,10 @@ was rendered to HTML, it would include RDFa stuff in it. I'm not sure that's
 worth the effort, but I started it
 [here](https://github.com/wware/redcarpet/tree/wware).
 
-My next thought is to use Markdown labels to hide Turtle statements in some
-Markdown source, and maybe write some code to add to RDFlib that knows how to
-navigate a Github repository to find the *.md files, go to their raw source
-files, and extract a semantic net based on that. So that's my next idea.
+My next thought is to use HTML comments to hide Turtle statements in Markdown
+source, and maybe write some code to add to RDFlib that knows how to navigate
+a Github repository to find the *.md files, go to their raw source files, and
+extract a semantic net based on that. So that's my next idea.
 
 <!--
 @prefix dc:   <http://purl.org/dc/terms/> .
