@@ -1,6 +1,6 @@
 """
 
-This is a simple primer using some of the 
+This is a simple primer using some of the
 example stuff in the Primer on N3:
 
 http://www.w3.org/2000/10/swap/Primer
@@ -12,7 +12,7 @@ http://www.w3.org/2000/10/swap/Primer
 from rdflib import ConjunctiveGraph, Namespace, Literal
 from rdflib.namespace import OWL, DC
 
-if __name__=='__main__':
+if __name__ == '__main__':
 
     # Firstly, it doesn't have to be so complex.
     # Here we create a "Graph" of our work.
@@ -25,7 +25,6 @@ if __name__=='__main__':
     # or:
     primer.add((myNS['pat'], myNS['age'], Literal(24)))
 
-
     # Now, with just that, lets see how the system
     # recorded *way* too many details about what
     # you just asserted as fact.
@@ -33,7 +32,6 @@ if __name__=='__main__':
 
     from pprint import pprint
     pprint(list(primer))
-
 
     # just think .whatever((s, p, o))
     # here we report on what we know
@@ -50,20 +48,15 @@ if __name__=='__main__':
     # who is what age?
     pprint(list(primer.subject_objects(myNS.age)))
 
-
-
     # Okay, so lets now work with a bigger
     # dataset from the example, and start
     # with a fresh new graph.
 
-
     primer = ConjunctiveGraph()
-
 
     # Lets start with a verbatim string straight from the primer text:
 
     mySource = """
-
 
     @prefix : <http://www.w3.org/2000/10/swap/Primer#>.
     @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -93,7 +86,7 @@ if __name__=='__main__':
 
     :sister a rdf:Property.
 
-    :sister rdfs:domain :Person; 
+    :sister rdfs:domain :Person;
             rdfs:range :Woman.
 
     :Woman = foo:FemaleAdult .
@@ -101,12 +94,12 @@ if __name__=='__main__':
 
 
 
-    """ # --- End of primer code
+    """  # --- End of primer code
 
-    # To make this go easier to spit back out... 
+    # To make this go easier to spit back out...
     # technically, we already created a namespace
     # with the object init (and it added some namespaces as well)
-    # By default, your main namespace is the URI of your 
+    # By default, your main namespace is the URI of your
     # current working directory, so lets make that simpler:
 
     myNS = Namespace('http://www.w3.org/2000/10/swap/Primer#')
@@ -118,7 +111,6 @@ if __name__=='__main__':
     # Lets load it up!
 
     primer.parse(data=mySource, format='n3')
-
 
     # Now you can query, either directly straight into a list:
 
@@ -135,5 +127,3 @@ if __name__=='__main__':
     # lets ask something about the data
 
     list(primer.objects(myNS.pat, myNS.child))
-
-

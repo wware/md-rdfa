@@ -3,6 +3,7 @@ import StringIO
 
 from rdflib import Graph
 
+
 class MarkdownGraph(Graph):
     def parse(self, *args, **kwargs):
         if kwargs.get('format') == 'md':

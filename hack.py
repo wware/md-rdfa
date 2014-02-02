@@ -1,9 +1,8 @@
-import os
 import sys
 
 from mdgraph import MarkdownGraph
 
-if __name__=='__main__':
+if __name__ == '__main__':
 
     store = MarkdownGraph()
     store.parse(sys.argv[1], format="md")
